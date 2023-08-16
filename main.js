@@ -70,6 +70,7 @@ productos.forEach((producto) =>{
         }
         contador()  
         localSt()
+        funcionCarrito()
     })
 })
 const funcionCarrito=()=>{
