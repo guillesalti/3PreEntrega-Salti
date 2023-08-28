@@ -14,7 +14,26 @@ buscador.addEventListener('change',e => {
 
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []
 
+
 /*CARDS ARTICULOS*/
+//ASINCRONIA
+const asincronia= ()=> {
+    (async () => {
+
+        const { value: email } = await Swal.fire({
+          title: '¡Registrate y recibí  nuestras ofertas exclusivas!',
+          input: 'email',
+          inputLabel: 'Ingresa tu Email.',
+          inputPlaceholder: 'email@ejemplo.com'
+        })
+        
+        if (email) {
+          Swal.fire(`¡Te registraste con exito! ${email}`)
+        }
+        
+        })()
+}
+setTimeout(asincronia,1000)
 const productos = [
     {imagen: "img/zapatilla1.jpg",nombre:"Zapatillas Nike Dunk Low Gs Naranja",precio:54500,id:1,cantidad:1,},
     {imagen: "img/zapatilla2.jpg",nombre:"Zapatillas Nike Dunk Low Gs Celeste",precio:58000,id:2,cantidad:1,},
@@ -68,6 +87,7 @@ productos.forEach((producto) =>{
                 cantidad:producto.cantidad,            
             })
         }
+        
         contador()  
         localSt()
         funcionCarrito()
@@ -133,7 +153,30 @@ const totalCarrito =document.createElement('div')
     totalCarrito.className='totalCarrito'
     totalCarrito.innerHTML=`Total a pagar: $${total}`
     contenedorCardCarrito.append(totalCarrito)
+
+    let finalizarCompra = document.createElement('button')
+    finalizarCompra.innerText= 'Finalizar compra'
+    finalizarCompra.className='finalizarCompra'
+    totalCarrito.append(finalizarCompra)
+    
+    
+
+    if(total > 0){
+        finalizarCompra = document.querySelector('.finalizarCompra')
+        finalizarCompra.classList.remove('filtro')}        
+        else{
+            finalizarCompra.classList.add('filtro')
+        }
+        
+    finalizarCompra.addEventListener('click', () => {
+        let ventanacompra = window.open('http://127.0.0.1:3000/finalizarcompra.html','_blank');
+        ventanacompra.focus();
+        limpiarLocal()
+        limpiarCarrito()
+    })
 }
+
+
 
 carritoCompras.addEventListener('click', funcionCarrito)
 
@@ -164,4 +207,18 @@ const localSt =()=>{
 
 JSON.parse(localStorage.getItem('carrito'))
 
+const limpiarLocal = () =>{
+    localStorage.clear()
+}
+const limpiarCarrito = () => {
+    contenedorCardCarrito.innerHTML=" "
+}
+
+///////////////////////////////////////DATOS FACTURACION
+const finalizarCompraCont = document.querySelector('#finalizarCompraCont')
+    let comprarCarrito = document.createElement('div');
+    comprarCarrito.classList.add('comprarCarrito');
+    comprarCarrito.innerHTML=`<p>hola</p>`;
+
+    finalizarCompraCont.append(comprarCarrito);
 
