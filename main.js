@@ -34,18 +34,7 @@ const asincronia= ()=> {
         })()
 }
 setTimeout(asincronia,1000)
-// const productos = [
-//     {imagen: "img/zapatilla1.jpg",nombre:"Zapatillas Nike Dunk Low Gs Naranja",precio:54500,id:1,cantidad:1,},
-//     {imagen: "img/zapatilla2.jpg",nombre:"Zapatillas Nike Dunk Low Gs Celeste",precio:58000,id:2,cantidad:1,},
-//     {imagen: "img/zapatilla3.jpg",nombre:"Zapatillas Nike Dunk Low Gs Azul",precio:57500,id:3,cantidad:1,},
-//     {imagen: "img/zapatilla4.jpg",nombre:"Zapatillas Nike Dunk Low Gs Rosa",precio:54500,id:4,cantidad:1,},
-//     {imagen: "img/zapatilla5.jpg",nombre:"Zapatillas Nike Dunk Low Gs Beige",precio:53800,id:5,cantidad:1,},
-//     {imagen: "img/zapatilla6.jpg",nombre:"Zapatillas Adidas Forum 84 low Violeta",precio:71000,id:6,cantidad:1,},
-//     {imagen: "img/zapatilla7.jpg",nombre:"Zapatillas Adidas Forum 84 low negras",precio:70000,id:7,cantidad:1,},
-//     {imagen: "img/zapatilla8.jpg",nombre:"Zapatillas Adidas Forum 84 low lila",precio:71000,id:8,cantidad:1,},
-//     {imagen: "img/zapatilla9.jpg",nombre:"Zapatillas Neu Balance 550 Gris",precio:54500,id:9,cantidad:1,},
-//     {imagen: "img/zapatilla10.jpg",nombre:"Zapatillas New Balance 550 Azul",precio:55000,id:10,cantidad:1,},  
-// ];
+
 fetch("productos.json")
 .then(respuesta => respuesta.json())
 .then(data=> {
@@ -92,54 +81,22 @@ fetch("productos.json")
             funcionCarrito()
         })
     })
+    
 })
+.catch(error=>{
+    Swal.fire(
+        'Ups...',
+        'Algo salio mal',
+        'error'
+      )
+})
+
 const contenedorCards = document.querySelector('#contenedorCards')
 const contenedorCardCarrito = document.querySelector('.nuevoProductoCarrito')
 const carritoCompras = document.querySelector('.iconoCarrito')
 const cantidadCarrito =document.querySelector('#cantidadCarrito')
 
-// productos.forEach((producto) =>{
-//     let contenidoPagina = document.createElement('div')
-//         contenidoPagina.className='cardProducto'
-//         contenidoPagina.innerHTML= `    
-//             <figure>
-//                 <img src="${producto.imagen}" alt="zapatilla">
-//             </figure>
-//             <div class="descripcionProducto">
-//                 <P class="nombreArticulo">${producto.nombre}</P>
-//                 <p class="precioArticulo">$${producto.precio}</p>    
-//             </div>    
-//         `    
-//     contenedorCards.append(contenidoPagina)
-// /*CARRITO*/   
-//     let añadirCarrito = document.createElement('button')
-//         añadirCarrito.innerText='Añadir al carrito'
-//         añadirCarrito.className='añadirCarrito'
-//         contenidoPagina.append(añadirCarrito)
 
-//     añadirCarrito.addEventListener('click', ()=>{
-//         const repetido = carrito.some((repetidoProducto) => repetidoProducto.id === producto.id)
-//         if(repetido){
-//             carrito.map((prod)=>{
-//                 if(prod.id === producto.id){
-//                     prod.cantidad++
-//                 }
-//             })
-//         }else{
-//             carrito.push({
-//                 imagen:producto.imagen,
-//                 nombre:producto.nombre,
-//                 precio:producto.precio,
-//                 id:producto.id,
-//                 cantidad:producto.cantidad,            
-//             })
-//         }
-        
-//         contador()  
-//         localSt()
-//         funcionCarrito()
-//     })
-// })
 const funcionCarrito=()=>{
     contenedorCardCarrito.innerHTML=''
     contenedorCardCarrito.style.display='flex'
