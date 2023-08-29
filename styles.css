@@ -220,7 +220,42 @@ header{
     margin: 50px;
  }
  
- #finalizarCompraCont{
+ #finalizarCompraCont{    
     display: flex;
-    justify-content: space-around;
+    align-content: center;
+    margin-top: 50px;
+    z-index: 1;
+    position: end;
+    
+ }
+ .datosPago  {
+    width: 50%;
+    padding: 90px;
+    background-color: #213aa8a4;
+    color: #fff;
+ }
+ .comprarCarrito{
+    margin-left: 100px;
+}
+ .datosPago button {
+    background-color: rgb(52, 202, 72);
+    color: white;
+    cursor: pointer;
+    border-color: rgb(15, 92, 25);
+    border-radius: 8%;
+    padding: 5px;
+    width: 100%;
+ }
+ .cardDatos{
+    border-style:ridge;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+ }
+ .cardDatos p {
+    margin: auto;
+ }
+ .tituloTarjeta{
+    font-size: small;
+    font-style: italic;
  }
