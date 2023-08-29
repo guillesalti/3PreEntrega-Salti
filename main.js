@@ -218,7 +218,7 @@ const totalCarrito =document.createElement('div')
         
         
     finalizarCompra.addEventListener('click', () => {
-        let ventanacompra = window.open('http://127.0.0.1:3000/finalizarcompra.html','_blank');
+        let ventanacompra = window.open('https://guillesalti.github.io/proyectoFinal-Salti/finalizarcompra.html','_blank');
         ventanacompra.focus();
                 
     })
